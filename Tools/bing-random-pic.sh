@@ -28,11 +28,12 @@ echo 'Running the bing-wallpaper script and loading settings.'
 source ${BING_SCRIPT}
 
 echo 'Removing today.jpg and random.jpg to ensure no symlink error occurs.'
-rm "${PICTURE_DIR}/today.jpg" "${PICTURE_DIR}/random.jpg"
+#rm "${PICTURE_DIR}/today.jpg" "${PICTURE_DIR}/random.jpg"
 
 echo "Linking today's Bing wallpaper to today.jpg."
 ln -s -f "${PICTURE_DIR}/${filename}" "${PICTURE_DIR}/today.jpg"
 
 echo 'Randomly selecting a picture and linking it to random.jpg'
-ln -s -f $(ls ${PICTURE_DIR}/*_*.jpg | grep -v ${filename} | shuf -n 1) \
-  "${PICTURE_DIR}/random.jpg"
+ln -s -f "${PICTURE_DIR}/${filename}" "${PICTURE_DIR}/random.jpg"
+#ln -s -f $(ls ${PICTURE_DIR}/*_*.jpg | grep -v ${filename} | shuf -n 1) \
+#  "${PICTURE_DIR}/random.jpg"
